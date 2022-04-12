@@ -16,6 +16,10 @@ app.set('view engine', 'pug');
 
 app.all('*', function(req, res, next){
   log.req(req)
+  if(req.hostname.startsWith('www')){
+    res.redirect('https://bbforest.net' + req.path)
+    return
+  }
   next()
 })
 
